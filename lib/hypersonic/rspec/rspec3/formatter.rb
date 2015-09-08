@@ -23,7 +23,7 @@ module Hypersonic
         end
 
         def example_started(notification)
-          spec = TestCase.new notification.example.description
+          spec = TestCase.new(notification.example.description)
           @current_spec = spec
           current_element.children << spec
           spec.start

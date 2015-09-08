@@ -28,7 +28,7 @@ module Hypersonic
       def print_tree(indent)
         space = "  " * indent
         space + name + "\n" +
-          @children.map {|s| space + s.print_tree(indent + 1)}.join("\n")
+          children.map {|s| space + s.print_tree(indent + 1)}.join("\n")
       end
     end
 
