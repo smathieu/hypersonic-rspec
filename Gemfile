@@ -4,3 +4,4 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'pry-byebug'
+gem 'hypersonic-ruby', path: '../hypersonic-ruby/'

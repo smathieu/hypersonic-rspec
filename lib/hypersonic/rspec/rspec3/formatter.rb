@@ -47,7 +47,9 @@ module Hypersonic
 
         def stop(notification)
           @test_graph.stop
-          puts @test_graph.inspect
+
+          metric = Publisher.new(@test_graph).to_metric
+          metric.save
         end
 
         private
