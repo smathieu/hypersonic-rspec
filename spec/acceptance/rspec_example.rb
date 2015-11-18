@@ -8,6 +8,8 @@ describe "a passing example" do
   it "passes" do
     true.should be true
   end
+
+  it { should == "a passing example" }
 end
 
 describe "a failing example" do

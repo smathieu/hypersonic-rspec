@@ -5,18 +5,22 @@ module Hypersonic
     describe Publisher do
       describe "#to_metric" do
         def make_test_case(name)
-          tc = TestCase.new("t1")
+          tc = TestCase.new
           tc.start
-          tc.pass!
+          tc.pass!(name)
           tc
         end
         let(:graph) do
           g = TestGraph.new
+          g.start
           s = TestSuite.new("a")
+          s.start
           s.children << make_test_case("t1")
           s.children << make_test_case("t2")
           s.children << make_test_case("t3")
           g.children << s
+          s.stop
+          g.stop
           g
         end
 

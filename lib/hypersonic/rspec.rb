@@ -6,6 +6,22 @@ require "hypersonic/rspec/rspec3/formatter"
 
 module Hypersonic
   module Rspec
-    # Your code goes here...
+    def self.enable!
+      notifications = [
+        :example_group_started,
+        :example_group_finished,
+        :example_started,
+        :example_passed,
+        :example_failed,
+        :example_pending,
+        :stop,
+        :start
+      ]
+
+      ::RSpec.configure do |config|
+        reporter = config.formatter_loader.reporter
+        reporter.register_listener(Rspec3::Formatter.new, *notifications)
+      end
+    end
   end
 end

@@ -19,13 +19,17 @@ module Hypersonic
       def add_to_metric(metric, child)
         if child.respond_to?(:children)
           metric.metric(child.name) do |m|
+            m.source 'rspec'
+            m.duration child.duration
             child.children.each do |child|
               add_to_metric(m, child)
             end
           end
         else
-          metric.duration child.duration
-          metric.source 'rspec'
+          metric.metric(child.name) do |metric|
+            metric.duration child.duration
+            metric.source 'rspec'
+          end
         end
       end
     end
